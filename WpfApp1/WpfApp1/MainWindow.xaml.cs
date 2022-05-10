@@ -23,16 +23,74 @@ namespace WpfApp1
         public MainWindow()
         {
             InitializeComponent();
-            int[] value = TwoSum(new int[] { 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 7, 1, 1, 1, 1, 1 }, 11);
+            //int[] value = TwoSum(new int[] { 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 7, 1, 1, 1, 1, 1 }, 11);
+        }
+        public string timeConversion(string s)
+        {
+            if (s[8] == 'A')
+            {
+                if (int.Parse(s.Substring(0, 2)) < 12)
+                {
+                    return s.Substring(0, 8);
+                }
+                else
+                {
+                    return "00" + s.Substring(2, 6);
+                }
+            }
+            else
+            {
+                if (int.Parse(s.Substring(0, 2)) < 12)
+                {
+                    return (int.Parse(s.Substring(0, 2)) + 12).ToString() + s.Substring(2, 6);
+                }
+                else
+                {
+                    return "12" + s.Substring(2, 6);
+                }
+            }
+        }
+        public void miniMaxSum(List<int> arr)
+        {
+            arr.Sort();
+            decimal maxSum = 0;
+            for (int i = 0; i < 5; i++)
+            {
+                maxSum += arr[i];
+            }
+            Console.WriteLine((maxSum - arr[4]).ToString() + " " + (maxSum - arr[0]).ToString());
+        }
+        public void plusMinus(List<int> arr)
+        {
+            int pos = 0, neg = 0, zero = 0;
+            for (int i = 0; i < arr.Count; i++)
+            {
+                if (arr[i] > 0)
+                {
+                    pos++;
+                }
+                else if (arr[i] < 0)
+                {
+                    neg++;
+                }
+                else
+                {
+                    zero++;
+                }
+            }
+
+            Console.WriteLine((float)pos / arr.Count);
+            Console.WriteLine((float)neg / arr.Count);
+            Console.WriteLine((float)zero / arr.Count);
         }
 
         private int[] TwoSum(int[] nums, int target)
         {
             Dictionary<int, int> dictionary = new Dictionary<int, int>();
-            for(int i=0; i < nums.Length; i++)
+            for (int i = 0; i < nums.Length; i++)
             {
                 int needNum = target - nums[i];
-                if(dictionary.ContainsKey(needNum) && dictionary[needNum] != i)
+                if (dictionary.ContainsKey(needNum) && dictionary[needNum] != i)
                 {
                     return new int[] { i, dictionary[needNum] };
                 }
