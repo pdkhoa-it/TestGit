@@ -25,6 +25,14 @@ namespace WpfApp1
             InitializeComponent();
             //int[] value = TwoSum(new int[] { 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 7, 1, 1, 1, 1, 1 }, 11);
         }
+        public static long flippingBits(long n)
+        {
+            string binaryValue = Convert.ToString(n, 2).PadLeft(32, '0');
+            binaryValue = binaryValue.Replace("0", "-");
+            binaryValue = binaryValue.Replace('1', '0');
+            binaryValue = binaryValue.Replace('-', '1');
+            return Convert.ToInt64(binaryValue, 2);
+        }
         public int lonelyinteger(List<int> a)
         {
             int max = 0;
