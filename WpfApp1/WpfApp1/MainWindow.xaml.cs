@@ -25,6 +25,28 @@ namespace WpfApp1
             InitializeComponent();
             //int[] value = TwoSum(new int[] { 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 7, 1, 1, 1, 1, 1 }, 11);
         }
+        public int lonelyinteger(List<int> a)
+        {
+            int max = 0;
+            for (int i = 0; i < a.Count; i++)
+            {
+                if (max < a[i] && a.Count(x => x == a[i]) == 1)
+                {
+                    max = a[i];
+                }
+            }
+            return max;
+        }
+        public List<int> matchingStrings(List<string> strings, List<string> queries)
+        {
+            List<int> result = new List<int>();
+            for(int i = 0; i < queries.Count; i++)
+            {
+                result.Add(strings.Count(x => x == queries[i]));
+            }
+            return result;
+        }
+
         public string timeConversion(string s)
         {
             if (s[8] == 'A')
