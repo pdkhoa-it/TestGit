@@ -25,6 +25,57 @@ namespace WpfApp1
             InitializeComponent();
             //int[] value = TwoSum(new int[] { 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 7, 1, 1, 1, 1, 1 }, 11);
         }
+
+        public string twoArrays(int k, List<int> A, List<int> B)
+        {
+            bool checkMin = false;
+            for (int i = 0; i < A.Count; i++)
+            {
+                checkMin = false;
+                for (int j = 0; j < B.Count; j++)
+                {
+                    if (A[i] + B[j] >= k)
+                    {
+                        checkMin = true;
+                        B[j] = 0;
+                        break;
+                    }
+                }
+                if (!checkMin)
+                {
+                    return "NO";
+                }
+            }
+            return "YES";
+        }
+
+        public string pangrams(string s)
+        {
+            s = s.ToLower();
+            int count = 26;
+            for(int i=97; i <= 122; i++)
+            {
+                if (s.Contains(((char)i).ToString()))
+                {
+                    count--;
+                }
+            }
+            return count == 0 ? "pangram" : "not pangram";
+        }
+
+        public int diagonalDifference(List<List<int>> arr)
+        {
+            int sumI = 0, sumII = 0;
+            int pos = 0;
+            for(int i = 0; i < arr.Count; i++)
+            {
+                sumI += arr[i][pos];
+                sumII += arr[i][arr.Count - pos - 1];
+                pos++;
+            }
+            return Math.Abs(sumI - sumII);
+        }
+
         public static long flippingBits(long n)
         {
             string binaryValue = Convert.ToString(n, 2).PadLeft(32, '0');
