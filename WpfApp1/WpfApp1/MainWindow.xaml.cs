@@ -24,8 +24,33 @@ namespace WpfApp1
         {
             InitializeComponent();
             //int[] value = TwoSum(new int[] { 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 7, 1, 1, 1, 1, 1 }, 11);
+            int b = birthday(new List<int>() { 2, 5, 1, 3, 4, 4, 3, 5, 1, 1, 2, 1, 4, 1, 3, 3, 4, 2, 1 }, 18, 7);
         }
+        public int birthday(List<int> s, int d, int m)
+        {
+            int compare = 0, pos = m, sub = 0, rst = 0;
+            for (int i=0;i<m;i++)
+            {
+                compare += s[i];
+            }
 
+            if(compare == d)
+            {
+                rst++;
+            }
+
+            while (pos < s.Count)
+            {
+                compare = compare + s[pos] - s[sub];
+                if(compare == d)
+                {
+                    rst++;
+                }
+                pos++;
+                sub++;
+            }
+            return rst;
+        }
         public string twoArrays(int k, List<int> A, List<int> B)
         {
             bool checkMin = false;
